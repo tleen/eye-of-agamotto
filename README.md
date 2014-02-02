@@ -1,7 +1,7 @@
 Eye of Agamotto
 ===============
 
-[![Build Status](https://travis-ci.org/tleen/eyeofagamotto.png?branch=master)](https://travis-ci.org/tleen/eyeofagamotto)
+[![Build Status](https://travis-ci.org/tleen/eye-of-agamotto.png?branch=master)](https://travis-ci.org/tleen/eye-of-agamotto)
 
 Node module, caching passthrough to the [Marvel API](http://developer.marvel.com/).
 

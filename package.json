@@ -1,20 +1,21 @@
 {
-  "name" : "eyeofagamotto",
+  "name" : "eye-of-agamotto",
   "description" : "Marvel Comics database api module with caching",
   "main" : "./index",
   "author" : "Thomas Leen",
   "version" : "0.0.1",
   "repository" : {
     "type" : "git",
-    "url" : "https://github.com/tleen/eyeofagamotto.git"
+    "url" : "https://github.com/tleen/eye-of-agamotto.git"
   },
-  "bugs" : "https://github.com/tleen/eyeofagamotto/issues",
+  "bugs" : "https://github.com/tleen/eyeof-agamotto/issues",
   "licenses" : [ {
     "type" : "MIT",
-    "url" : "https://github.com/tleen/eyeofagamotto/blob/master/LICENSE"
+    "url" : "https://github.com/tleen/eye-of-agamotto/blob/master/LICENSE"
   } ],
   "dependencies" : {
-    "request" : "2.33.0"
+    "request" : "2.33.0",
+    "underscore" : "1.5.2"
   },
   "devDependencies" : {
     "grunt" : "0.4.2",
