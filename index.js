@@ -13,7 +13,7 @@ module.exports = function(config){
     file : '.eoa-cache.json',
     every : 6000,
     duration : (1000 * 60 * 60 * 60 * 24 * 1), //month
-    rate : 5000
+    throttle : (1000 * 30)
   });
 
   var keys = (configuration.keys || require('./.keys.json').keys);
@@ -22,7 +22,8 @@ module.exports = function(config){
   var r = retainer({
     defaults : {json : true},
     store : require('cachy-memory-persistent')(_.pick(configuration, 'file', 'every')),
-    duration : configuration.duration
+    duration : configuration.duration,
+    throttle : configuration.throttle
   });
 
   var request = function(endpoint, params, callback){

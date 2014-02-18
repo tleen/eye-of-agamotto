@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 	"predef" : [ // mocha test defs
           'after',
           'before',
+          'beforeEach',
           'describe',
           'it']
       },

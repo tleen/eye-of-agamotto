@@ -8,8 +8,6 @@ var config = {};
 
 // if on travis keys will be an env var
 if(process.env.TRAVIS) config.keys = {public : process.env.MARVEL_PUBLIC_KEY, private : process.env.MARVEL_PRIVATE_KEY};
-console.log('travis show');
-console.log(config.keys);
 
 var api = eoa(config);
 
@@ -24,8 +22,21 @@ describe('versioning', function(){
 });
 
 describe('characters', function(){
+  
+  beforeEach(function(){
+    this.timeout(1000 * 60 * 60);
+  });
+  
   it('should fetch characters information for "daredevil"', function(done){
     api.characters({name : 'daredevil'}, function(err, data){
+      should(err).be.not.ok;
+      should(data).be.ok.and.an.Object;
+      done();
+    });		     
+  });
+
+  it('should fetch characters information for "psylocke"', function(done){
+    api.characters({name : 'psylocke'}, function(err, data){
       should(err).be.not.ok;
       should(data).be.ok.and.an.Object;
       done();
