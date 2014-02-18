@@ -1,8 +1,5 @@
 'use strict';
 
-
-
-
 var eoa = require('..'),
 pkg = require('../package.json'),
 should = require('should');
@@ -11,6 +8,8 @@ var config = {};
 
 // if on travis keys will be an env var
 if(process.env.keys) config.keys = process.env.keys;
+console.log('travis show');
+console.log(process.env);
 
 var api = eoa(config);
 
