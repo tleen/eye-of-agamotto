@@ -1,6 +1,6 @@
 {
   "name" : "eye-of-agamotto",
-  "description" : "Marvel Comics database api module with caching",
+  "description" : "Marvel Comics database api module with throttling/caching",
   "main" : "./index",
   "author" : "Thomas Leen",
   "version" : "0.0.1",

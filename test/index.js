@@ -23,11 +23,8 @@ describe('versioning', function(){
 
 describe('characters', function(){
   
-  beforeEach(function(){
-    this.timeout(1000 * 60 * 60);
-  });
-  
   it('should fetch characters information for "daredevil"', function(done){
+    this.timeout(1000 * 60 * 60);
     api.characters({name : 'daredevil'}, function(err, data){
       should(err).be.not.ok;
       should(data).be.ok.and.an.Object;
@@ -36,6 +33,7 @@ describe('characters', function(){
   });
 
   it('should fetch characters information for "psylocke"', function(done){
+    this.timeout(1000 * 60 * 60);
     api.characters({name : 'psylocke'}, function(err, data){
       should(err).be.not.ok;
       should(data).be.ok.and.an.Object;
