@@ -4,3 +4,6 @@ node_js:
 notifications:
  email:
   - "tl@thomasleen.com"
+env:
+  global:
+    - secure : "Qqcb5xzW6cbQ9as4iDMXjX7Uong1RobUih6X+qkn561HREQnsN1Zlvdp9s0NA/m5limQgGRQ19cHjF9v6fB8uYli+DpzyykFH4pGWwpJXzMKP6mSZihmOKIod7jjiiZVeEEDc1LlQBHVSjBSTt7nxM2NjVtqDsou/lG4c/aPbeA="

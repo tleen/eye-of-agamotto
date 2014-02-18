@@ -14,8 +14,10 @@
     "url" : "https://github.com/tleen/eye-of-agamotto/blob/master/LICENSE"
   } ],
   "dependencies" : {
+    "cachy-memory-persistent" : "latest",
     "request" : "2.33.0",
-    "underscore" : "1.5.2"
+    "retainer" : "latest",
+    "underscore" : "1.6.0"
   },
   "devDependencies" : {
     "grunt" : "0.4.2",
@@ -28,7 +30,7 @@
   }, 
   "keywords" : [
     "marvel",
-    "marvel api",
-    "marvel comics"
+    "api",
+    "comics"
   ]
 }

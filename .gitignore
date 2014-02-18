@@ -1,3 +1,4 @@
 node_modules
 .keys.json
-.cache
+.eoa-cache.json
+scratch/

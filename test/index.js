@@ -1,23 +1,34 @@
 'use strict';
 
-var marvel = require('..')(),
+
+
+
+var eoa = require('..'),
 pkg = require('../package.json'),
 should = require('should');
 
+var config = {};
+
+// if on travis keys will be an env var
+if(process.env.keys) config.keys = process.env.keys;
+
+var api = eoa(config);
+
 describe('versioning', function(){
   it('should have a version', function(){
-    marvel.should.have.property('version');
+    api.should.have.property('version');
   });
 
   it('should equal package version', function(){
-    marvel.version.should.be.exactly(pkg.version);
+    api.version.should.be.exactly(pkg.version);
   });
 });
 
 describe('characters', function(){
   it('should fetch characters information for "daredevil"', function(done){
-    marvel.characters({name : 'daredevil'}, function(err, data){
-      console.log(err, data);
+    api.characters({name : 'daredevil'}, function(err, data){
+      should(err).be.not.ok;
+      should(data).be.ok.and.an.Object;
       done();
     });		     
   });
