@@ -7,9 +7,9 @@ should = require('should');
 var config = {};
 
 // if on travis keys will be an env var
-if(process.env.TRAVIS) config.keys = process.env.keys;
+if(process.env.TRAVIS) config.keys = {public : process.env.MARVEL_PUBLIC_KEY, private : process.env.MARVEL_PRIVATE_KEY};
 console.log('travis show');
-console.log(process.env.keys);
+console.log(config.keys);
 
 var api = eoa(config);
 

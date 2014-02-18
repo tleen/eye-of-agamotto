@@ -6,4 +6,5 @@ notifications:
   - "tl@thomasleen.com"
 env:
   global:
-    - secure : "Qqcb5xzW6cbQ9as4iDMXjX7Uong1RobUih6X+qkn561HREQnsN1Zlvdp9s0NA/m5limQgGRQ19cHjF9v6fB8uYli+DpzyykFH4pGWwpJXzMKP6mSZihmOKIod7jjiiZVeEEDc1LlQBHVSjBSTt7nxM2NjVtqDsou/lG4c/aPbeA="
+    - secure : "gFp7RK/IXD/9QyG8t4wbjaDPrhwn/3/0i//yOMaMYYz0DKxRN2EQATWT1accwrEEfsplEiZ5WDYujbMVmH3Ehjfl9CQMujmSh8txIn3Icsqn/Tg6T+G2ilcB3meEnQtiWWSEtc1BgUnb0l4nd4dZOayPWuI98s0vvtBebcO+E9M="
+    - secure : "aoC8/+1UZHdkr6R4a7hWXg1oOyla0lODUXlV2WRIDUugmSGdcN3W4Kk7N7VQ2gL/9H2Pr8SHRgA9Ml3bWDlT4ij8toLFs1peuTYxpIYwGwI3cUC3mbYu0w34J2Bgv4oVwAysZfPL1piQ5Ua10+cEulPUnSdYJ1Vb+JQKwgE72oI="
