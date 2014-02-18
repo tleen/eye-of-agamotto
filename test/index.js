@@ -7,9 +7,9 @@ should = require('should');
 var config = {};
 
 // if on travis keys will be an env var
-if(process.env.keys) config.keys = process.env.keys;
+if(process.env.TRAVIS) config.keys = process.env.keys;
 console.log('travis show');
-console.log(process.env);
+console.log(process.env.keys);
 
 var api = eoa(config);
 
