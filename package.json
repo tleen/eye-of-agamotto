@@ -1,9 +1,9 @@
 {
   "name" : "eye-of-agamotto",
-  "description" : "Marvel Comics database api module with throttling/caching",
+  "description" : "Marvel Comics database api access with throttling/caching",
   "main" : "./index",
   "author" : "Thomas Leen",
-  "version" : "0.0.1",
+  "version" : "0.0.2",
   "repository" : {
     "type" : "git",
     "url" : "https://github.com/tleen/eye-of-agamotto.git"
@@ -14,9 +14,11 @@
     "url" : "https://github.com/tleen/eye-of-agamotto/blob/master/LICENSE"
   } ],
   "dependencies" : {
+    "async" : "0.2.10",
     "cachy-memory-persistent" : "latest",
     "request" : "2.33.0",
     "retainer" : "latest",
+    "string" : "1.8.0",
     "underscore" : "1.6.0"
   },
   "devDependencies" : {
