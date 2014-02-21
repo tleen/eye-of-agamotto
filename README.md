@@ -15,6 +15,6 @@ Given the rate limits there is not a lot you can do with a real-time app. Theref
 One of the useful things it does is pull full data sets, it will continue to pull on results using the limit (100) till the total number of available results are fetched. This may be very slow as requests are throttled, however once the api calls in the cache this is very fast.
 
 ## Examples
-Take a look at the [examples](examples/) to see how you can use this module. Everything is still a little flaky, but its a start :)
+Take a look at the [examples](examples/) to see how you can use this module.
 
 Of course, the data is provided by [Marvel](http://marvel.com).
