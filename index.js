@@ -7,6 +7,7 @@ pkg = require('./package.json'),
 retainer = require('retainer'),
 S = require('string'),
 url = require('url'),
+util = require('util'),
 _  = require('underscore');
 
 
@@ -37,8 +38,6 @@ module.exports = function(config){
 
   var request = function(endpoint, params, callback){
 
-//    console.log('calling', endpoint);
-
     params = _.defaults({}, params, {
       limit : MAX_RESULTS,
       offset : 0
@@ -50,8 +49,6 @@ module.exports = function(config){
       pathname: '/v1/public/' + endpoint,
     });
 
-
-//    console.log('requesting', uri, params, authinfo);
 // results are wrapped in container with:
 // offset, limit, total, count
 // run in async series collecting data till limit or total is reached
@@ -73,8 +70,13 @@ module.exports = function(config){
       var localParams = _.extend(params, {limit : eachLimit, offset : currentOffset});
       r.get(uri, localParams, authinfo, function(err, json){
 	if(err) return callback(err);
-	results = results.concat(json.data.results);
 	
+	// xx - ook for marvel defined errors and use those as err in callback too
+	if(_.isEmpty(json)) return callback('No results for api call: ' + uri);
+	if(json.status != 'Ok') return callback(util.format('Error (%s) in api call: %s', json.code, json.message));
+
+	results = results.concat(json.data.results);
+
 	// update positional numbers
 
 	total = json.data.total;
@@ -83,7 +85,6 @@ module.exports = function(config){
 	return callback();
       });
     }, function(){
-//      console.log('currentOffset', currentOffset, 'total', total);
       // max results is a cutoff if comething goes haywire, so we dont hammer the api
       return ((currentOffset < total) || (currentOffset >= MAX_RESULTS));
     }, function(err){
@@ -114,22 +115,23 @@ module.exports = function(config){
     _.each(api[primary], function(secondary, i, secondaries){
  
       var funcName = secondaries[0];
-      var endpoint = [primary];
+      var endpoint = [primary, '{{id}}'];
 
-      if(i) funcName = [secondary, 'With', S(funcName).capitalize().s, 'Id'].join('');
-//      console.log('defining', funcName);
+      if(i){
+	funcName = [secondary, 'With', S(funcName).capitalize().s, 'Id'].join('');
+	endpoint.push(secondary);
+      }
+      endpoint = endpoint.join('/');
 
-      returner[funcName] = function(){ // id, {params}, callback	
+      returner[funcName] = function(){ // id, {params}, callback
 	var args = _.toArray(arguments);
 	var id = args.shift();
 	var callback = args.pop();
 	var params = (args.length ? args.pop() : {});
 
-	endpoint.push(id);
-	if(i) endpoint.push(secondary);
-//	console.log(funcName, endpoint, params);
+	var uri = S(endpoint).template({id : id}).s;
 
-	return request(endpoint.join('/'), params, callback);
+	return request(uri, params, callback);
       };
     });
   });

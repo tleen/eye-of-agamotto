@@ -24,7 +24,7 @@ describe('versioning', function(){
 
 describe('characters', function(){
   
-  it('should fetch characters information for "daredevil"', function(done){
+  it('should fetch characters list matching "daredevil"', function(done){
     this.timeout(timeout);
     api.characters({name : 'daredevil'}, function(err, data){
       should(err).be.not.ok;
@@ -33,7 +33,7 @@ describe('characters', function(){
     });		     
   });
 
-  it('should fetch character information about "daredevil"', function(done){
+  it('should fetch specific character information about "daredevil"', function(done){
     this.timeout(timeout);
     api.character(1009262, function(err, data){     
       should(err).be.not.ok;
