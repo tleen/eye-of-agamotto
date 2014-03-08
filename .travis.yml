@@ -4,6 +4,8 @@ node_js:
 notifications:
  email:
   - "tl@thomasleen.com"
+before_install:
+  - npm config set ca ""
 env:
   global:
     - secure : "gFp7RK/IXD/9QyG8t4wbjaDPrhwn/3/0i//yOMaMYYz0DKxRN2EQATWT1accwrEEfsplEiZ5WDYujbMVmH3Ehjfl9CQMujmSh8txIn3Icsqn/Tg6T+G2ilcB3meEnQtiWWSEtc1BgUnb0l4nd4dZOayPWuI98s0vvtBebcO+E9M="
