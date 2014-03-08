@@ -53,7 +53,6 @@ describe('characters', function(){
 	  should(err).be.not.ok;
 	  should(data).be.ok.and.an.Array.and.have.lengthOf(1);
 	  data[0].should.have.property('description');
-	  console.log(data[0].description);
 	  data[0].description.should.match(new RegExp(character.match,'g'));
 	  return done();
 	});
