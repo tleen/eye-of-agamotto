@@ -136,5 +136,21 @@ module.exports = function(config){
     });
   });
 
+  // some utility functions
+  returner.characterNameToIds = function characterNameToIds(name, callback){
+    returner.characters({name : name}, function(err, data){
+      if(err) return callback(err);
+      if(data.length === 0) return callback('No results');
+      else return callback(null, _.pluck(data, 'id'));
+    });
+  };
+
+  returner.characterNameToId = function characterNameToId(name, callback){
+    returner.characterNameToIds(name, function(err, ids){
+      if(err) return callback(err);
+      else return callback(null, ids[0]);
+    });
+  };
+
   return returner;
 };

@@ -24,23 +24,56 @@ describe('versioning', function(){
 
 describe('characters', function(){
   
-  it('should fetch characters list matching "daredevil"', function(done){
-    this.timeout(timeout);
-    api.characters({name : 'daredevil'}, function(err, data){
-      should(err).be.not.ok;
-      should(data).be.ok.and.an.Object;
-      return done();
-    });		     
-  });
+  [{
+    name: 'daredevil',
+    id : 1009262,
+    match : 'Matt Murdock'
+  },{
+    name: 'squirrel girl', 
+    id : 1010860,
+    match : 'Doreen Green'
+  },{
+    name : 'spider-man',
+    id : 1009610,
+    match : 'Peter Parker'}].forEach(function(character){
 
-  it('should fetch specific character information about "daredevil"', function(done){
-    this.timeout(timeout);
-    api.character(1009262, function(err, data){     
-      should(err).be.not.ok;
-      should(data).be.ok.and.an.Array.and.have.lengthOf(1);
-      data[0].should.have.property('description');
-      data[0].description.should.match(/Matt Murdock/); // I'M NOT DARE DEVIL
-      return done();
-    });
+      it('should fetch characters list matching "' + character.name + '"', function(done){
+	this.timeout(timeout);
+	api.characters({name : character.name}, function(err, data){
+	  should(err).be.not.ok;
+	  should(data[0]).be.ok.and.an.Object.and.have.property('id');
+	  data[0].id.should.be.Number.and.equal(character.id);
+	  return done();
+	});		     
+      });
+      
+      it('should fetch specific character information about "' + character.name + '"', function(done){
+	this.timeout(timeout);
+	api.character(character.id, function(err, data){     
+	  should(err).be.not.ok;
+	  should(data).be.ok.and.an.Array.and.have.lengthOf(1);
+	  data[0].should.have.property('description');
+	  console.log(data[0].description);
+	  data[0].description.should.match(new RegExp(character.match,'g'));
+	  return done();
+	});
+      });
+      
+      it('should fetch array of ids from name "' + character.name + '"', function(done){
+	api.characterNameToIds(character.name, function(err, ids){
+	  should(ids).be.ok.and.an.Array;
+	  ids.length.should.be.above(0);
+	  ids[0].should.be.a.Number.and.equal(character.id);
+	  return done();
+	});
+      });
+
+
+      it('should fetch single "' + character.id + '" from name "' + character.name + '"', function(done){
+	api.characterNameToId(character.name, function(err, id){
+	  should(id).be.ok.and.a.Number.and.equal(character.id);
+	  return done();
+	});
+      });         
   });
 });
