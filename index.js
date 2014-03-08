@@ -29,6 +29,7 @@ module.exports = function(config){
   var r = retainer({
     defaults : {
       json : true, 
+      strictSSL : false,
       headers : { 
 	'User-Agent' : 'Eye of Agamotto, ' + pkg.version }},
     store : require('cachy-memory-persistent')(_.pick(configuration, 'file', 'every')),

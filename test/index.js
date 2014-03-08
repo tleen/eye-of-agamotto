@@ -28,14 +28,14 @@ describe('characters', function(){
     name: 'daredevil',
     id : 1009262,
     match : 'Matt Murdock'
-  },{
+  }/*,{
     name: 'squirrel girl', 
     id : 1010860,
     match : 'Doreen Green'
   },{
     name : 'spider-man',
     id : 1009610,
-    match : 'Peter Parker'}].forEach(function(character){
+    match : 'Peter Parker'}*/].forEach(function(character){
 
       it('should fetch characters list matching "' + character.name + '"', function(done){
 	this.timeout(timeout);
