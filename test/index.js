@@ -60,6 +60,7 @@ describe('characters', function(){
       });
       
       it('should fetch array of ids from name "' + character.name + '"', function(done){
+	this.timeout(timeout);
 	api.characterNameToIds(character.name, function(err, ids){
 	  should(ids).be.ok.and.an.Array;
 	  ids.length.should.be.above(0);
@@ -70,6 +71,7 @@ describe('characters', function(){
 
 
       it('should fetch single "' + character.id + '" from name "' + character.name + '"', function(done){
+	this.timeout(timeout);
 	api.characterNameToId(character.name, function(err, id){
 	  should(id).be.ok.and.a.Number.and.equal(character.id);
 	  return done();
