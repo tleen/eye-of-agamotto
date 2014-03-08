@@ -8,7 +8,10 @@ var config = {};
 var timeout = (1000 * 60 * 60 * 5);
 
 // if on travis keys will be an env var
-if(process.env.TRAVIS) config.keys = {public : process.env.MARVEL_PUBLIC_KEY, private : process.env.MARVEL_PRIVATE_KEY};
+if(process.env.TRAVIS){
+  config.keys = {public : process.env.MARVEL_PUBLIC_KEY, private : process.env.MARVEL_PRIVATE_KEY};
+  config.secure = false;
+}
 
 var api = eoa(config);
 

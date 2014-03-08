@@ -20,7 +20,8 @@ module.exports = function(config){
     file : '.eoa-cache.json',
     every : (1000 * 60 * 60 * 1), // * x minutes, write cache out
     duration : (1000 * 60 * 60 * 60 * 24 * 1), // expire cache entries in * x days
-    throttle : (1000 * 5) // only allow one (non-cached) api request every five seconds
+    throttle : (1000 * 5), // only allow one (non-cached) api request every five seconds
+    secure : true
   });
 
   var keys = (configuration.keys || require('./.keys.json').keys);
@@ -28,8 +29,7 @@ module.exports = function(config){
 
   var r = retainer({
     defaults : {
-      json : true, 
-      strictSSL : false,
+      json : true,
       headers : { 
 	'User-Agent' : 'Eye of Agamotto, ' + pkg.version }},
     store : require('cachy-memory-persistent')(_.pick(configuration, 'file', 'every')),
@@ -45,7 +45,7 @@ module.exports = function(config){
     });
 
     var uri = url.format({
-      protocol : 'http',
+      protocol : (configuration.secure ? 'https' : 'http'),
       host: 'gateway.marvel.com',
       pathname: '/v1/public/' + endpoint,
     });
