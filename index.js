@@ -18,8 +18,8 @@ module.exports = function(config){
   
   var configuration = _.defaults({}, config, {
     file : '.eoa-cache.json',
-    every : (1000 * 60 * 60 * 10), // ten minutes, write cache out
-    duration : (1000 * 60 * 60 * 60 * 24 * 1), // expire cache entries in ~ month
+    every : (1000 * 60 * 60 * 1), // * x minutes, write cache out
+    duration : (1000 * 60 * 60 * 60 * 24 * 1), // expire cache entries in * x days
     throttle : (1000 * 5) // only allow one (non-cached) api request every five seconds
   });
 
