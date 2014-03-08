@@ -45,7 +45,7 @@ module.exports = function(config){
     });
 
     var uri = url.format({
-      protocol : 'https',
+      protocol : 'http',
       host: 'gateway.marvel.com',
       pathname: '/v1/public/' + endpoint,
     });
